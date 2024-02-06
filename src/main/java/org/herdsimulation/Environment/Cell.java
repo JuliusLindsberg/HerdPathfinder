@@ -1,21 +1,23 @@
-package org.herdsimulation;
+package org.herdsimulation.Environment;
 //import java.lang.random;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import static java.lang.Integer.parseInt;
-import static java.lang.Math.random;
 import static java.lang.Math.round;
 
 // examples of cells referred to by Strings:
+// X:Y
 // 15:50    0:5    10:10
-public class Cell {
+public class Cell
+{
 
     public static String intToDirection(int dir)
     {
-        return switch (dir) {
+        return switch (dir)
+        {
             case 0 -> "N";
             case 1 -> "W";
             case 2 -> "S";
@@ -45,7 +47,7 @@ public class Cell {
     }
 
     ArrayList<String> traversables;
-    ArrayList<String> generateTraversables(float _obstacleRate)
+    Set<String> generateTraversables(float _obstacleRate)
     {
         ArrayList<String> newTraversables = new java.util.ArrayList<>(Collections.emptyList());
         //
@@ -67,7 +69,10 @@ public class Cell {
         }
         return newTraversables;
     }
-
+    public Set<String> getTraversables()
+    {
+        return traversables;
+    }
     float reward;
     public Cell(float _obstacleRate, int x, int y)
     {
@@ -95,5 +100,4 @@ public class Cell {
             System.out.println( traversables.get(r.nextInt(0, printablesCount)) );
         }
     }
-
 }

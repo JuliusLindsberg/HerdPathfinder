@@ -1,12 +1,13 @@
-package org.herdsimulation;
+package org.herdsimulation.Environment;
 
-import java.sql.Array;
+import org.herdsimulation.Route.Policy;
+
 import java.util.ArrayList;
-import java.util.List;
 
 // This class is responsible for keeping track of the real map. The real underlying data of the map are to be
 // considered as unobserved confounders by the Model: there is only partial information present.
-public class Map2D {
+public class Map2D
+{
     static int defaultSize = 200;
     static int defaultHerdSize = 1;
     static public int getDefaultSize()
@@ -22,7 +23,25 @@ public class Map2D {
     {
         String[] separation = cellID.split(":", 2);
         System.out.println(separation[0]);
-        return cells[ Integer.parseInt(separation[0]) ][ Integer.parseInt(separation[1]) ];
+        int x = Integer.parseInt(separation[0]);
+        int y = Integer.parseInt(separation[1]);
+        if(y >= height || x >= width )
+        {
+            throw new ArrayIndexOutOfBoundsException("Cell (" + x + ", " + y + ") is out of map bounds!");
+        }
+        return cells[ y ][ x ];
+    }
+    public Policy[] isTraversable(String scan, int distance)
+    {
+        Policy[] returnPolicy = null;
+
+        return returnPolicy;
+    }
+    public Policy[] traversablesFrom(String scan, int distance)
+    {
+        Policy[] returnPolicy = null;
+
+        return returnPolicy;
     }
     static public void setDefaultSize(int newSize)
     {

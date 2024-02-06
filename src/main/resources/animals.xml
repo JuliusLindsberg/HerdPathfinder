@@ -1,0 +1,76 @@
+
+<!--
+	Herds are common livestock mobs, such as sheep, cows or pigs.
+	Ratio demarks the amount of generated vanilla mob herds that transition into Herd agents.
+-->
+<Herd mod="Sheep" ratio="1.0">
+	<!--
+	If one of these three behavioral patterns is not implemented, the probability for transitioning into them will just always be 0.
+	The actual underlying logic of Herd, Flock and School models will be kept as hard coded, but
+	the utilities and probabilities can be weighted depending on the mob (or rather, the RL agent) in question.
+	-->
+	<Exploration default="1">
+		<Transition mode="Domestication">
+		</Transition>
+
+		<Transition mode="Dispersion">
+		</Transition>
+
+		<Transition mode="Domestication">
+		</Transition>
+	</Exploration>
+
+	<Domestication>
+		<Transition mode="Domestication">
+		</Transition>
+
+		<Transition mode="Dispersion">
+		</Transition>
+
+		<Transition mode="Domestication">
+		</Transition>
+	</Domestication>
+
+	<Roaming>
+		<Transition mode="Domestication">
+		</Transition>
+
+		<Transition mode="Dispersion">
+		</Transition>
+
+		<Transition mode="Domestication">
+		</Transition>
+	</Roaming>
+
+	<Utility>
+
+	</Utility>
+
+</Herd>
+<!--
+  Flocks are swarms of flying creatures, such as bats or birds.
+-->
+<Flock mob="Bat" ratio="0.0">
+	<!-- Generates  -->
+	<Generates probability="0.01" min = "5" max = "30">
+		<NOT>daylight</NOT>
+		<AND>minecraft:stone
+			<OR>minecraft:granite</OR>
+			<OR>minecraft:gravel</OR>
+			<OR>minecraft:diorite</OR>
+			<OR>minecraft:andesite</OR>
+		</AND>
+	</Generates>
+	<Utility>
+
+	</Utility>
+
+</Flock>
+<!--
+  Schooling fish unsurpricingly always stay in bodies of water while frequently changing their location
+-->
+<School>
+	<Migrates>
+	Temperature
+	</Migrates>
+</School>

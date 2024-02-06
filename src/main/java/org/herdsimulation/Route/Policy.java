@@ -1,4 +1,4 @@
-package org.herdsimulation;
+package org.herdsimulation.Route;
 // Policy is a hypothetical route from one cell to another.
 // If the route is traversable, it has a value of 1. If not, the value is 0.
 // Policies follow an optimal substructure.
@@ -6,12 +6,22 @@ package org.herdsimulation;
 //examples of policies being referred to by Strings:
 // 5:E@0:5,16:W@0:5    10:N@5:5,3:S@5:5
 // 2:N@10:14,4:S@10:10    6:S@11:300,7:E@11:300,0:N@42:42
+
+import org.herdsimulation.Environment.Map2D;
+
+// It is intended that policies and routes transition the information of the 2D map into a graph structure
+// in order to be more compatible with Markov chains and Markov Decision Processes. It is hypothesized that
+// this approach is going to manifest itself in the game as a thin and approximately uniform cloud of pathfinding
+// probabilities of animal movement on the over-world.
 public class Policy
 {
     static final float timePenalty = -0.1f;
     String start;
     String end;
+    // Whether the route can be passed through
     boolean traversable;
+    // Whether the route is a two-way or one-way passage. Fences are one way which may make some routes as one-way paths.
+    boolean directed;
     Policy(String startPoint, String endPoint)
     {
         start = startPoint;

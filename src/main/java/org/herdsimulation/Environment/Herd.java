@@ -1,12 +1,13 @@
-package org.herdsimulation;
+package org.herdsimulation.Environment;
 
-import org.herdsimulation.Behaviors.*;
+import org.herdsimulation.Behaviors.Domestication;
+import org.herdsimulation.Behaviors.Exploration;
+import org.herdsimulation.Behaviors.Roaming;
+import org.herdsimulation.Behaviors.State;
+import org.herdsimulation.Models.Model;
 
-
-import java.util.List;
-
-public class Herd {
-    HerdMode mode;
+public class Herd
+{
     char symbol;
     int x, y;
     public int X()
@@ -24,13 +25,12 @@ public class Herd {
     public Herd(int _x, int _y)
     {
         //assign a random alphabet character as a symbol for the herd
-        symbol = (char)Cell.r.nextInt(65, 90);
+        symbol = (char) Cell.r.nextInt(65, 90);
         x = _x; y = _y;
-        mode = HerdMode.roaming;
         Model model = new Model();
         State[] behaviors = new State[]
                 {
-                new Domestication(20.0f),
+                new Domestication("NULL"),
                 new Exploration(),
                 new Roaming()
                 };

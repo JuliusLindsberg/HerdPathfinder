@@ -1,15 +1,30 @@
 package org.herdsimulation.Behaviors;
 
-import org.herdsimulation.Model;
+import org.herdsimulation.Environment.Herd;
+import org.herdsimulation.Models.Model;
+import org.herdsimulation.Models.HerdMode;
 
-public class Roaming extends State {
+// This is the hardest model state to give a straight description of, but it is best understood as an intermediary between
+// Domestication and Exploration. In the roaming state, the boundaries of a superstructure are somewhat known, but in the
+// Atoms in a fluid analogy thermal equilibrium has not yet been achieved. The most likely reason for this being the presence
+// Of other herds in the area. Under the Roaming behavior optimal policies are to be found mainly by scheduling previously known route
+// patterns. The hope being that this state will simultaneously optimize grazing while still preserving individual behavioral patterns
+// between multiple herds with differing knowledge of route patterns in an environment.
+
+public class Roaming extends State
+{
     @Override
-    public HerdMode transition() {
+    public HerdMode transition(Herd herd, Model model) {
         return null;
     }
 
     @Override
-    public void behavior(Model model) {
+    public void behavior(Herd herd, Model model) {
+
+    }
+    @Override
+    public void scan(Herd herd, Model model)
+    {
 
     }
 }
