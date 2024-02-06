@@ -14,7 +14,7 @@ public class Domestication extends State
         radius = _radius;
     }
     @Override
-    public HerdMode transition(Herd herd, Model model) {
+    public Herd transition(Herd herd, Model model) {
         return null;
     }
 

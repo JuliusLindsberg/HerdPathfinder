@@ -1,9 +1,9 @@
 package org.herdsimulation.Behaviors;
 
 import jdk.jshell.spi.ExecutionControl;
+import jdk.jshell.spi.ExecutionControl.NotImplementedException;
 import org.herdsimulation.Environment.Herd;
 import org.herdsimulation.Environment.Map2D;
-import org.herdsimulation.Models.HerdMode;
 import org.herdsimulation.Models.Model;
 import org.herdsimulation.Route.Policy;
 
@@ -43,7 +43,7 @@ public abstract class State
         // Example: 20:10
         else if(scan.contains(":"))
         {
-            throw new ExecutionControl.NotImplementedException("Functionality for cell scans is not yet implemented!");
+            throw new NotImplementedException("Functionality for cell scans is not yet implemented!");
         }
         // -> Unknown scan format. As long as the activeMap has been set, cellScan function is supposed to be
         // safe from other exceptions than that.
@@ -56,7 +56,7 @@ public abstract class State
     {
 
     }
-    public abstract HerdMode transition(Herd herd, Model model);
+    public abstract Herd transition(Herd herd, Model model);
     public abstract void behavior(Herd herd, Model model);
     public abstract void scan( Herd herd, Model model );
 }

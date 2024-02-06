@@ -27,12 +27,5 @@ public class Herd
         //assign a random alphabet character as a symbol for the herd
         symbol = (char) Cell.r.nextInt(65, 90);
         x = _x; y = _y;
-        Model model = new Model();
-        State[] behaviors = new State[]
-                {
-                new Domestication("NULL"),
-                new Exploration(),
-                new Roaming()
-                };
     }
 }
