@@ -1,6 +1,5 @@
 package org.herdsimulation.Behaviors;
 
-import jdk.jshell.spi.ExecutionControl;
 import jdk.jshell.spi.ExecutionControl.NotImplementedException;
 import org.herdsimulation.Environment.Herd;
 import org.herdsimulation.Environment.Map2D;
@@ -12,8 +11,9 @@ public abstract class State
     //How far away cell scans can be conducted in chunks
     final int scanDistance = 4;
     private Map2D activeMap;
-    // in theory, herds may end up in different dimensions.
+    // in theory, herds may end up in different dimensions during runtime.
     // The easiest way to deal with this problem would probably be by resetting the entire model and switch the map.
+    // Another way to resolve the issue would be to define the dimensions in the xml files of the herd.
     // If this situation won't be dealt with in the final mod, crashes and undefined behavior would be likely follow.
     public void changeMap(Herd herd, Model model, Map2D newMap)
     {

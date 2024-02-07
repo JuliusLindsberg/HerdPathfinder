@@ -2,7 +2,7 @@ package org.herdsimulation.Behaviors;
 
 import org.herdsimulation.Environment.Herd;
 import org.herdsimulation.Models.Model;
-import org.herdsimulation.Models.HerdMode;
+import org.herdsimulation.Models.Herd;
 
 // Herds in the exploration state wander freely within their environment, looking for grazeable terrain from their surroundings.
 // Optimal performance is evaluated by the success in forming long chains of routes with viable grazing areas along the route.
@@ -16,7 +16,7 @@ public class Exploration extends State
 
     }
     @Override
-    public HerdMode transition(Herd herd, Model model)
+    public Herd transition(Herd herd, Model model)
     {
         return null;
     }
