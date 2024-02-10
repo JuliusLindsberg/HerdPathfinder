@@ -18,7 +18,7 @@ public class Map2D
     final int highTraversableThreshold = 200;
     final int lowTraversableThreshold = 100;
     Cell[][] cells;
-    ArrayList<Herd> herds;
+    ArrayList<Agent> herds;
     Cell cellByString(String cellID)
     {
         String[] separation = cellID.split(":", 2);
@@ -60,10 +60,10 @@ public class Map2D
             }
         }
 
-        herds = new ArrayList<Herd>();
+        herds = new ArrayList<Agent>();
         for(int i = 0; i < herdAmount; i++)
         {
-            herds.add(new Herd( Cell.r.nextInt(0, width) , Cell.r.nextInt(0, height) ));
+            herds.add(new Agent( Cell.r.nextInt(0, width) , Cell.r.nextInt(0, height) ));
         }
     }
     public Map2D(int _width, int _height, int herdAmount)
@@ -114,7 +114,7 @@ public class Map2D
                 // if any herds are residing in this cell, print the symbol of the first herd instead
                 if(!herds.isEmpty())
                 {
-                    for(Herd herd: herds)
+                    for(Agent herd: herds)
                     {
                         if(herd.X() == c && herd.Y() == i)
                         {

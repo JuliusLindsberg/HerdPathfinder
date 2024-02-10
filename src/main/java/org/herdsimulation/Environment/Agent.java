@@ -4,7 +4,7 @@ import org.herdsimulation.Models.Model;
 
 public class Agent extends Model
 {
-    char symbol;
+    char sign;
     int x, y;
     public int X()
     {
@@ -14,14 +14,16 @@ public class Agent extends Model
     {
         return y;
     }
-    public char Symbol()
+    public char Sign()
     {
-        return symbol;
+        return sign;
     }
-    public Agent(int _x, int _y)
+    public Agent(int _x, int _y, char _sign, String type)
     {
-        //assign a random alphabet character as a symbol for the herd
-        symbol = (char) Cell.r.nextInt(65, 90);
+        super(type);
+        //assign a random alphabet character as a symbol for the herd:
+        // Cell.r.nextInt(65, 90)
+        sign = _sign;
         x = _x; y = _y;
     }
 }

@@ -10,14 +10,12 @@
 	the utilities and probabilities can be weighted depending on the mob (or rather, the RL agent) in question.
 	-->
 	<Exploration default="1">
-		<Transition mode="Domestication">
+		<Transition mode="Domestication" epsilon="0.01">
 		</Transition>
 
-		<Transition mode="Dispersion">
+		<Transition mode="Dispersion" epsilon="0.1">
 		</Transition>
 
-		<Transition mode="Domestication">
-		</Transition>
 	</Exploration>
 
 	<Domestication>
@@ -25,9 +23,6 @@
 		</Transition>
 
 		<Transition mode="Dispersion">
-		</Transition>
-
-		<Transition mode="Domestication">
 		</Transition>
 	</Domestication>
 
@@ -37,13 +32,14 @@
 
 		<Transition mode="Dispersion">
 		</Transition>
-
-		<Transition mode="Domestication">
-		</Transition>
 	</Roaming>
-
-	<Utility>
-
+	<!--
+	Utility can be derived from a lot of things, such as blocks, environmental factors such as a biome type or temperature or a time of day.
+	Utility could be thought of as an energy source for a living organism.
+	-->
+	<Utility weight = "1.0">
+		minecraft:grass
+		<AND>sunlight</AND>
 	</Utility>
 
 </Herd>
@@ -53,7 +49,7 @@
 <Flock mob="Bat" ratio="0.0">
 	<!-- Generates  -->
 	<Generates probability="0.01" min = "5" max = "30">
-		<NOT>daylight</NOT>
+		<NOT>sunlight</NOT>
 		<AND>minecraft:stone
 			<OR>minecraft:granite</OR>
 			<OR>minecraft:gravel</OR>
@@ -67,10 +63,10 @@
 
 </Flock>
 <!--
-  Schooling fish unsurpricingly always stay in bodies of water while frequently changing their location
+  Schooling fish unsurprisingly always stay in bodies of water while frequently changing their location
 -->
 <School>
 	<Migrates>
-	Temperature
+	temperature = COLD
 	</Migrates>
 </School>

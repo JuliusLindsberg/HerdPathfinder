@@ -1,6 +1,6 @@
 package org.herdsimulation.Behaviors;
 
-import org.herdsimulation.Environment.Herd;
+import org.herdsimulation.Environment.Agent;
 import org.herdsimulation.Models.Model;
 import org.herdsimulation.Models.Herd;
 

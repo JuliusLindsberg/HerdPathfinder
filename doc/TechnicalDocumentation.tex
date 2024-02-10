@@ -1,0 +1,122 @@
+\documentclass[]{article}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+
+
+%opening
+\title{HerdCraft technical documentation}
+\author{Julius Lindsberg}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+[Insert brief description of HerdCraft here]
+
+\subsection{Reinforcement Learning}
+
+The primary goal of AI in the mod is to implement a path-finding system which is simultaneously in line with the requirements for Richard Bellman's principle of optimality and is also capable of adapting to changes in the environment during the game in a way how real animals would (with limited line of sight). These requirements necessitate Reinforcement Learning and environmental models capable of dealing with statistical probabilities and uncertainty. This appears to be a classic use case for the Markov Decision Process (MDP).
+
+An auxiliary goal of the project is to study machine learning in practice by implementing a reasonably modular RL library for the internal purposes of the mod. However, the plan here is to not use elements of machine learning or a training set before they become truly necessary. AI is occasionally treated as a magic wand which provides easy solutions under circumstances where traditional programming would be sufficient. Such cargo culting of AI is not the intended usage of machine learning for the mod.
+
+\subsection{Work smarter, not harder!}
+
+In addition to providing an API for XML editing and the technical documentation for internal classes and methods this document aims to divide up the project's workload into manageable subsections, which can be pursued in a chronological order on a timeline but without a set timetable for completion. Since there is no necessity for releasing a minimum viable product based on a set schedule, clear planning of classes and their relations beforehand reduces the risk for having to do major refactoring during later phases of development. This being a hobby project with no clients or pressures for release it appears preferable approach using a "Big Design Up Front" (BDUF) approach.
+
+\newpage
+\section{XML Applications Programming Interface}
+
+%% XML text style layout stolen from: https://tex.stackexchange.com/questions/91298/including-xml-file-into-latex
+
+    \lstset{
+	language=xml,
+	tabsize=3,
+	%frame=lines,
+	caption=animals.xml,
+	label=code:sample,
+	frame=shadowbox,
+	rulesepcolor= \color{gray},
+	xleftmargin=20pt,
+	framexleftmargin=15pt,
+	keywordstyle= \color{blue}\bf,
+	commentstyle= \color{OliveGreen},
+	stringstyle= \color{red},
+	numbers=left,
+	numberstyle=\tiny,
+	numbersep=5pt,
+	breaklines=true,
+	showstringspaces=false,
+	basicstyle=\footnotesize,
+	emph={food,name,price},emphstyle={ \color{magenta}}}
+
+\lstinputlisting{../src/main/resources/animals.xml}
+[After animals.xml file is ready, divide it up into three separate files with herd, flock and school]
+
+\subsection{Logical and arithmetic operations}
+
+Some elements (utility and generation) support the use of basic linear arithmetic- (summation, multiplication, subtraction) and logical AND, OR and XOR operators. Recursive statements are also supported. However, excessively complicated utility functions are subject to produce sub-optimal results.
+
+\subsection{Element A}
+
+\subsubsection{Attribute A}
+
+\subsubsection{Attribute B}
+
+\subsubsection{Attribute C}
+
+\subsection{Element B}
+
+\subsubsection{Attribute A}
+
+\subsubsection{Attribute B}
+
+
+\newpage
+\section{Functional Specification}
+
+[Insert class diagram image here]
+
+\subsection{Class 1}
+
+\subsubsection{Method A}
+
+\subsection{Class 2}
+
+\subsubsection{Method A}
+
+\subsubsection{Method B}
+
+\subsection{Class 3}
+
+\subsubsection{Method A}
+
+\subsubsection{Method B}
+
+\subsubsection{Method C}
+
+\newpage
+
+\section{Sequence of Implementation}
+
+[General description of the roadmap.]
+
+\subsection{XML and planning phase}
+
+Where most of the contents and structure of this document are produced. The goal is to have a working understanding of what the major functions and ML elements are going to be before actually implementing the Forge mod.
+
+\subsection{Dynamic Programming, 2D simulation}
+
+During this phase of development a path-finding solution making use of dynamic programming is implemented in a 2D map. The map contains paths which are traversable or not and the traversibility of the map is subject to change during. This is the first time where it can be known what the algorhitmic requirements for training the RL Agent can be discovered.
+
+\subsection{Forge mod, 3D proof-of-concept}
+
+One of the big unresolved questions with this project is in how well a real three dimensional Minecraft map translates into the a graph structure. It is already known from a code-review that the Herd AI movements can be inserted into a priority-queue of Minecraft mobs.
+
+\subsection{title}
+
+\end{document}
