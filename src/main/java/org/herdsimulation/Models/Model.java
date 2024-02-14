@@ -1,5 +1,6 @@
 package org.herdsimulation.Models;
 
+import javax.xml.crypto.dsig.XMLObject;
 import java.util.List;
 
 // this is the subjective model of the map the herd uses for calculating the utilities from its policies.
@@ -10,11 +11,18 @@ import java.util.List;
 
 public class Model
 {
+
+    public static String XMLMathExpression(XMLObject)
+    {
+
+        return null;
+    }
+
     String[] policies;
     //String[] habits;
     public Model(String XMLName)
     {
-        
+
     }
     public Model(String[] policies)
     {
@@ -25,4 +33,5 @@ public class Model
         policies = null;
         //habits = null;
     }
+
 }
