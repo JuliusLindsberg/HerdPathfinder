@@ -6,10 +6,13 @@ import org.herdsimulation.Environment.Map2D;
 import org.herdsimulation.Models.Model;
 import org.herdsimulation.Route.Policy;
 
+import java.util.Set;
+
 public abstract class State
 {
     //How far away cell scans can be conducted in chunks
-    final int scanDistance = 4;
+    int scanDistance = 4;
+    Set<String> actionSpace;
     private Map2D activeMap;
     // in theory, herds may end up in different dimensions during runtime.
     // The easiest way to deal with this problem would probably be by resetting the entire model and switch the map.

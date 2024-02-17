@@ -13,7 +13,7 @@ import org.herdsimulation.Environment.Map2D;
 // in order to be more compatible with Markov chains and Markov Decision Processes. It is hypothesized that
 // this approach is going to manifest itself in the game as a thin and approximately uniform cloud of pathfinding
 // probabilities of animal movement on the over-world.
-public class Policy
+public class Route
 {
     static final float timePenalty = -0.1f;
     String start;
@@ -22,13 +22,13 @@ public class Policy
     boolean traversable;
     // Whether the route is a two-way or one-way passage. Fences are one way which may make some routes as one-way paths.
     boolean directed;
-    Policy(String startPoint, String endPoint)
+    Route(String startPoint, String endPoint)
     {
         start = startPoint;
         end = endPoint;
         traversable = false;
     }
-    Policy(boolean isTraversable)
+    Route(boolean isTraversable)
     {
         traversable = isTraversable;
     }

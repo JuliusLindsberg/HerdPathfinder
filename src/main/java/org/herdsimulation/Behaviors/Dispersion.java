@@ -1,6 +1,5 @@
 package org.herdsimulation.Behaviors;
 
-import org.herdsimulation.Environment.Agent;
 import org.herdsimulation.Models.Model;
 import org.herdsimulation.Models.Herd;
 
@@ -9,9 +8,9 @@ import org.herdsimulation.Models.Herd;
 // Boundaries of some superstructure such as a fence enclosure or, say, a grassland biome between a desert and an ocean are not yet known.
 // Exploration behavior state is supposed to resemble most Lévy flight.
 // https://en.wikipedia.org/wiki/L%C3%A9vy_flight
-public class Exploration extends State
+public class Dispersion extends State
 {
-    public Exploration(String XMLName)
+    public Dispersion(String XMLName)
     {
 
     }
