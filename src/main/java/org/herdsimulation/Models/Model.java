@@ -4,8 +4,11 @@ import org.herdsimulation.Behaviors.State;
 import org.w3c.dom.Attr;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import javax.xml.crypto.dsig.XMLObject;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,8 +20,8 @@ import java.util.Map;
 
 public class Model
 {
-    Map<String, State> states;
-    public static String XMLMathExpression(XMLObject element)
+    HashMap<String, State> states;
+    public static String XMLMathExpression(Node element)
     {
 
         return null;
@@ -27,10 +30,28 @@ public class Model
     {
 
     }
-    protected void InitializeModel(Node type)
+    protected void InitializeModel(Node element)
     {
-        NamedNodeMap attributes = type.getAttributes();
-        attributes.getNamedItem("");
+        NamedNodeMap attributes = element.getAttributes();
+        Node mob = attributes.getNamedItem("mob");
+        Node ratio = attributes.getNamedItem("ratio");
+        NodeList childNodes = element.getChildNodes();
+        for(int i = 0; i < childNodes.getLength(); i++)
+        {
+            Node node = childNodes.item(i);
+            String name = node.getNodeName();
+            switch (name)
+            {
+                case "Utility":
+                    break;
+                case "Exploration":
+                    break;
+                case "Roaming":
+                    break;
+                default:
+                    continue;
+            }
+        }
     }
     String[] policies;
     //String[] habits;

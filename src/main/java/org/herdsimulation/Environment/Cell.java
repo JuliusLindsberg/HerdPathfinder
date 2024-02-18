@@ -1,9 +1,6 @@
 package org.herdsimulation.Environment;
 //import java.lang.random;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 import static java.lang.Integer.parseInt;
 import static java.lang.Math.round;
@@ -46,14 +43,15 @@ public class Cell
         return r.nextFloat(minReward, maxReward);
     }
 
-    Set<String> traversables;
-    Set<String> generateTraversables(float _obstacleRate)
+    HashSet<String> traversables;
+    HashSet<String> generateTraversables(float _obstacleRate)
     {
-        Set<String> newTraversables = Collections.emptySet();
-        //
+        HashSet<String> newTraversables = new HashSet<String>();
+
         float traversableRate = (float) r.nextGaussian((double)(1.0f-obstacleRate)*(float)cellSize*cellSize, (double)(float)cellSize);
         int traversableCount =  round(traversableRate);
-        for( int i = 0; i < traversableCount; i++ ) {
+        for( int i = 0; i < traversableCount; i++ )
+        {
 
             int d1;
             int d2;
@@ -69,7 +67,7 @@ public class Cell
         }
         return newTraversables;
     }
-    public Set<String> getTraversables()
+    public HashSet<String> getTraversables()
     {
         return traversables;
     }

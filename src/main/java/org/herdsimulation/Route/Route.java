@@ -15,14 +15,13 @@ import org.herdsimulation.Environment.Map2D;
 // probabilities of animal movement on the over-world.
 public class Route
 {
-    static final float timePenalty = -0.1f;
     String start;
     String end;
-    // Whether the route can be passed through
+    // Whether the route may be passed through
     boolean traversable;
-    // Whether the route is a two-way or one-way passage. Fences are one way which may make some routes as one-way paths.
+    // Whether the route is a two-way or one-way passage. Fences adjacent to blocks would be one way for some routes to be one-way paths.
     boolean directed;
-    Route(String startPoint, String endPoint)
+    public Route(String startPoint, String endPoint)
     {
         start = startPoint;
         end = endPoint;
@@ -44,7 +43,7 @@ public class Route
         }
         else
         {
-            return worldMap.getCell(start).getCellReward() - timePenalty * (float) time;
+            return worldMap.getCell(start).getCellReward() - 0 * (float) time;
         }
     }
 }

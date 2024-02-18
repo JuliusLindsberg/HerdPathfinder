@@ -1,72 +1,75 @@
-
-<!--
-	Herds are common livestock mobs, such as sheep, cows or pigs.
-	Ratio demarks the amount of generated vanilla mob herds that transition into Herd agents.
--->
-<Herd mod="Sheep" ratio="1.0">
+<?xml version="1.0" encoding="UTF-8"?> 
+<animals>
 	<!--
-	If one of these three behavioral patterns is not implemented, the probability for transitioning into them will just always be 0.
-	The actual underlying logic of Herd, Flock and School models will be kept as hard coded, but
-	the utilities and probabilities can be weighted depending on the mob (or rather, the RL agent) in question.
+		Herds are common livestock mobs, such as sheep, cows or pigs.
+		Ratio demarks the amount of generated vanilla mob herds that transition into Herd agents.
 	-->
-	<Exploration default="1">
-		<Transition mode="Domestication" epsilon="0.01">
-		</Transition>
+	<Herd mob="Sheep" ratio="1.0">
+		<!--
+		If one of these three behavioral patterns is not implemented, the probability for transitioning into them will just always be 0.
+		The actual underlying logic of Herd, Flock and School models will be kept as hard coded, but
+		the utilities and probabilities can be weighted depending on the mob (or rather, the RL agent) in question.
+		-->
+		<Exploration default="1">
+			<Transition mode="Domestication" epsilon="0.01">
+			</Transition>
 
-		<Transition mode="Dispersion" epsilon="0.1">
-		</Transition>
+			<Transition mode="Dispersion" epsilon="0.1">
+			</Transition>
 
-	</Exploration>
+		</Exploration>
 
-	<Domestication>
-		<Transition mode="Domestication">
-		</Transition>
+		<Domestication>
+			<Transition mode="Domestication">
+			</Transition>
 
-		<Transition mode="Dispersion">
-		</Transition>
-	</Domestication>
+			<Transition mode="Dispersion">
+			</Transition>
+		</Domestication>
 
-	<Roaming>
-		<Transition mode="Domestication">
-		</Transition>
+		<Roaming>
+			<Transition mode="Domestication">
+			</Transition>
 
-		<Transition mode="Dispersion">
-		</Transition>
-	</Roaming>
+			<Transition mode="Dispersion">
+			</Transition>
+		</Roaming>
+		<!--
+		Utility can be derived from a lot of things, such as blocks, environmental factors such as a biome type or temperature or a time of day.
+		Utility could be thought of as an energy source for a living organism.
+		-->
+		<Utility weight = "1.0">
+			minecraft:grass
+			<AND>sunlight</AND>
+		</Utility>
+
+	</Herd>
 	<!--
-	Utility can be derived from a lot of things, such as blocks, environmental factors such as a biome type or temperature or a time of day.
-	Utility could be thought of as an energy source for a living organism.
+	  Flocks are swarms of flying creatures, such as bats or birds.
 	-->
-	<Utility weight = "1.0">
-		minecraft:grass
-		<AND>sunlight</AND>
-	</Utility>
+	<Flock mob="Bat" ratio="0.0">
+		<!-- Generates  -->
+		<Generates probability="0.01" min = "5" max = "30">
+			<NOT>sunlight</NOT>
+			<AND>minecraft:stone
+				<OR>minecraft:granite</OR>
+				<OR>minecraft:gravel</OR>
+				<OR>minecraft:diorite</OR>
+				<OR>minecraft:andesite</OR>
+			</AND>
+		</Generates>
+		<Utility>
 
-</Herd>
-<!--
-  Flocks are swarms of flying creatures, such as bats or birds.
--->
-<Flock mob="Bat" ratio="0.0">
-	<!-- Generates  -->
-	<Generates probability="0.01" min = "5" max = "30">
-		<NOT>sunlight</NOT>
-		<AND>minecraft:stone
-			<OR>minecraft:granite</OR>
-			<OR>minecraft:gravel</OR>
-			<OR>minecraft:diorite</OR>
-			<OR>minecraft:andesite</OR>
-		</AND>
-	</Generates>
-	<Utility>
+		</Utility>
 
-	</Utility>
+	</Flock>
+	<!--
+	  Schooling fish unsurprisingly always stay in bodies of water while frequently changing their location
+	-->
+	<School mob="Salmon" ratio="1.0">
+		<Migrates>
+		temperature = COLD
+		</Migrates>
+	</School>
 
-</Flock>
-<!--
-  Schooling fish unsurprisingly always stay in bodies of water while frequently changing their location
--->
-<School>
-	<Migrates>
-	temperature = COLD
-	</Migrates>
-</School>
+</animals>

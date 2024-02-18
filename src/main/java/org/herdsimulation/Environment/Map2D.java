@@ -17,6 +17,8 @@ public class Map2D
     int width, height;
     final int highTraversableThreshold = 200;
     final int lowTraversableThreshold = 100;
+    public final String XMLPath = "src/main/resources/";
+    public final String XMLName = "animals.xml";
     Cell[][] cells;
     ArrayList<Agent> herds;
     Cell cellByString(String cellID)
@@ -59,11 +61,10 @@ public class Map2D
                 cells[i][c] = new Cell( Math.min( 1.0f, Math.max( 0.0f, (float)Cell.r.nextGaussian(0.5, 0.2) ) ), c, i);
             }
         }
-
         herds = new ArrayList<Agent>();
         for(int i = 0; i < herdAmount; i++)
         {
-            //herds.add(new Agent( Cell.r.nextInt(0, width) , Cell.r.nextInt(0, height) ));
+            herds.add(new Agent( Cell.r.nextInt(0, width) , Cell.r.nextInt(0, height), 'A', XMLPath + XMLName, "Herd", "Sheep" ));
         }
     }
     public Map2D(int _width, int _height, int herdAmount)
@@ -78,7 +79,7 @@ public class Map2D
     {
         if(cellID.contains(","))
         {
-            throw new UnsupportedOperationException("Real utility cannot be calculated from policies. Use a model for this instead.");
+            throw new UnsupportedOperationException();
         }
         if(cellID.contains("@"))
         {

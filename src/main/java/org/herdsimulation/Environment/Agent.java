@@ -2,6 +2,7 @@ package org.herdsimulation.Environment;
 
 import org.herdsimulation.Models.Model;
 import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
@@ -28,9 +29,10 @@ public class Agent extends Model
     {
         return sign;
     }
-    public Agent(int _x, int _y, char _sign, String XMLFile, String type)
+    public Agent(int _x, int _y, char _sign, String XMLFile, String type, String mob)
     {
         super();
+        System.out.println("Constructing Agent!");
         DocumentBuilder builder = null;
         Document doc = null;
         try {
@@ -45,15 +47,32 @@ public class Agent extends Model
         } catch (SAXException | IOException e) {
             throw new RuntimeException(e);
         }
-
+        Node constructorElement = null;
         NodeList nodeList = doc.getElementsByTagName(type);
-        Node first = nodeList.item(0);
-
-        //Initialize the MDP model with the help of XML data
-        InitializeModel(first);
+        System.out.println(" nodeList length " + nodeList.getLength());
+        for(int i = 0; i < nodeList.getLength(); i++)
+        {
+            //System.out.println("prosessing element " + nodeList.item(i).getNodeName());
+            NamedNodeMap attributes = nodeList.item(i).getAttributes();
+            //System.out.println(" attributes length " + attributes.getLength());
+            Node attribute = attributes.getNamedItem("mob");
+            if( attribute != null)
+            {
+                System.out.println("Element found");
+                constructorElement = nodeList.item(i);
+                break;
+            }
+        }
+        if(constructorElement == null)
+        {
+            throw new RuntimeException("Constructor element for agent of type (" + type + ", " + mob + ") was not found!");
+        }
+        //Initialize the MDP model using the XML file data
+        InitializeModel(constructorElement);
         //assign a random alphabet character as a symbol for the herd:
         // Cell.r.nextInt(65, 90)
         sign = _sign;
         x = _x; y = _y;
+        System.out.println("Agent constructed!");
     }
 }

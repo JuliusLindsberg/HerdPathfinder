@@ -7,8 +7,7 @@ public class Main {
     {
         System.out.println("Herd simulation!");
 
-        Map2D gameMap = new Map2D(40, 10, 5);
-
+        Map2D gameMap = new Map2D(40, 10, 1);
         //gameMap.printCell("30:9");
         //gameMap.printCell("15:7");
         //gameMap.printCell("16:0");
