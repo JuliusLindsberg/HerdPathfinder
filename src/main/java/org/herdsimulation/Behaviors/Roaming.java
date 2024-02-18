@@ -1,8 +1,5 @@
 package org.herdsimulation.Behaviors;
-
-import org.herdsimulation.Environment.Herd;
 import org.herdsimulation.Models.Model;
-import org.herdsimulation.Models.HerdMode;
 
 // This is the hardest model state to give a straight description of, but it is best understood as an intermediary between
 // Domestication and Exploration. In the roaming state, the boundaries of a superstructure are somewhat known, but in the
@@ -14,16 +11,18 @@ import org.herdsimulation.Models.HerdMode;
 public class Roaming extends State
 {
     @Override
-    public HerdMode transition(Herd herd, Model model) {
+    public String transition(Model model)
+    {
         return null;
     }
 
     @Override
-    public void behavior(Herd herd, Model model) {
+    public void behavior(Model model)
+    {
 
     }
     @Override
-    public void scan(Herd herd, Model model)
+    public void scan(Model model)
     {
 
     }

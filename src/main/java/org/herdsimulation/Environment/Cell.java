@@ -46,10 +46,10 @@ public class Cell
         return r.nextFloat(minReward, maxReward);
     }
 
-    ArrayList<String> traversables;
+    Set<String> traversables;
     Set<String> generateTraversables(float _obstacleRate)
     {
-        ArrayList<String> newTraversables = new java.util.ArrayList<>(Collections.emptyList());
+        Set<String> newTraversables = Collections.emptySet();
         //
         float traversableRate = (float) r.nextGaussian((double)(1.0f-obstacleRate)*(float)cellSize*cellSize, (double)(float)cellSize);
         int traversableCount =  round(traversableRate);
@@ -97,7 +97,7 @@ public class Cell
         System.out.println( "Cell has " + traversables.size() + " traversables. Printing a random sample of " + printablesCount + " elements:" );
         for(int i = 0; i < printablesCount; i++)
         {
-            System.out.println( traversables.get(r.nextInt(0, printablesCount)) );
+            //System.out.println( traversables.get(r.nextInt(0, printablesCount)) );
         }
     }
 }

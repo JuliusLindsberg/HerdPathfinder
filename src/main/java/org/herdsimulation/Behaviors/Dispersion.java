@@ -1,5 +1,6 @@
 package org.herdsimulation.Behaviors;
 
+import org.herdsimulation.Environment.Agent;
 import org.herdsimulation.Models.Model;
 import org.herdsimulation.Models.Herd;
 
@@ -15,18 +16,18 @@ public class Dispersion extends State
 
     }
     @Override
-    public Herd transition(Herd herd, Model model)
+    public String transition(Model model)
     {
         return null;
     }
 
     @Override
-    public void behavior(Herd herd, Model model)
+    public void behavior(Model model)
     {
 
     }
     @Override
-    public void scan(Herd herd, Model model)
+    public void scan(Model model)
     {
 
     }

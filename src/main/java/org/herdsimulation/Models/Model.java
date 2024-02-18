@@ -1,7 +1,13 @@
 package org.herdsimulation.Models;
 
+import org.herdsimulation.Behaviors.State;
+import org.w3c.dom.Attr;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+
 import javax.xml.crypto.dsig.XMLObject;
 import java.util.List;
+import java.util.Map;
 
 // this is the subjective model of the map the herd uses for calculating the utilities from its policies.
 // The model by design is an imperfect representation of the 2D map with statistical probabilities
@@ -11,27 +17,26 @@ import java.util.List;
 
 public class Model
 {
-
-    public static String XMLMathExpression(XMLObject)
+    Map<String, State> states;
+    public static String XMLMathExpression(XMLObject element)
     {
 
         return null;
     }
+    protected Model()
+    {
 
+    }
+    protected void InitializeModel(Node type)
+    {
+        NamedNodeMap attributes = type.getAttributes();
+        attributes.getNamedItem("");
+    }
     String[] policies;
     //String[] habits;
-    public Model(String XMLName)
-    {
-
-    }
-    public Model(String[] policies)
-    {
-
-    }
     public void reset()
     {
         policies = null;
-        //habits = null;
     }
 
 }

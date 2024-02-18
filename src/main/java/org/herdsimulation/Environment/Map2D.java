@@ -1,6 +1,6 @@
 package org.herdsimulation.Environment;
 
-import org.herdsimulation.Route.Policy;
+import org.herdsimulation.Route.Route;
 
 import java.util.ArrayList;
 
@@ -31,15 +31,15 @@ public class Map2D
         }
         return cells[ y ][ x ];
     }
-    public Policy[] isTraversable(String scan, int distance)
+    public Route[] isTraversable(String scan, int distance)
     {
-        Policy[] returnPolicy = null;
+        Route[] returnPolicy = null;
 
         return returnPolicy;
     }
-    public Policy[] traversablesFrom(String scan, int distance)
+    public Route[] traversablesFrom(String scan, int distance)
     {
-        Policy[] returnPolicy = null;
+        Route[] returnPolicy = null;
 
         return returnPolicy;
     }
@@ -63,7 +63,7 @@ public class Map2D
         herds = new ArrayList<Agent>();
         for(int i = 0; i < herdAmount; i++)
         {
-            herds.add(new Agent( Cell.r.nextInt(0, width) , Cell.r.nextInt(0, height) ));
+            //herds.add(new Agent( Cell.r.nextInt(0, width) , Cell.r.nextInt(0, height) ));
         }
     }
     public Map2D(int _width, int _height, int herdAmount)
@@ -118,7 +118,7 @@ public class Map2D
                     {
                         if(herd.X() == c && herd.Y() == i)
                         {
-                            System.out.print(herd.Symbol());
+                            System.out.print(herd.Sign());
                             herdResiding = true;
                             break;
                         }
