@@ -21,7 +21,10 @@ import java.util.Map;
 public class Model
 {
     HashMap<String, State> states;
-    public static String XMLMathExpression(Node element)
+    String UtilityExpression;
+    //Interprets a logic/arithmetic expression into String format following the polish notation.
+    //https://en.wikipedia.org/wiki/Polish_notation
+    public static String ParseXMLMathExpression(Node element)
     {
 
         return null;
@@ -43,6 +46,7 @@ public class Model
             switch (name)
             {
                 case "Utility":
+                    UtilityExpression = ParseXMLMathExpression(node);
                     break;
                 case "Exploration":
                     break;
