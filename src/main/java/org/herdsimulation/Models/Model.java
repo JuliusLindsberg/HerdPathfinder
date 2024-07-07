@@ -24,10 +24,64 @@ public class Model
     String UtilityExpression;
     //Interprets a logic/arithmetic expression into String format following the polish notation.
     //https://en.wikipedia.org/wiki/Polish_notation
-    public static String ParseXMLMathExpression(Node element)
+    //Recursive function, untested!
+    private static String ParseXMLMathExpression(Node element, String expression)
     {
+        String operation = element.getNodeName();
+        NodeList elements = element.getChildNodes();
+        NamedNodeMap attributes = element.getAttributes();
+        String atomicValue = element.getNodeValue();
 
-        return null;
+        if(attributes.getLength() != 0)
+        {
+            Node gain = attributes.getNamedItem("gain");
+            if(gain != null)
+            {
+                expression += "*" + gain.getNodeValue();
+            }
+        }
+        if(operation.equals("and") || operation.equals("AND"))
+        {
+            expression += "|";
+        }
+        else if(operation.equals("or") || operation.equals("OR"))
+        {
+            expression += "&";
+        }
+        else
+        {
+            expression += "*";
+        }
+        expression += atomicValue;
+
+        if(elements.getLength() == 0)
+        {
+            return expression;
+        }
+        else {
+            return ParseXMLMathExpression(elements.item(0) ,expression);
+        }
+        /*
+        This commented-out segment makes an attempt to handle not binary trees only. Delete this soon.
+        //AND
+        for(int i = 0; i < elements.getLength(); i++)
+        {
+            ParseXMLMathExpression(elements.item(i), expression);
+            expression += "&";
+            expression += ParseXMLMathExpression(elements.item(i), expression);
+        }
+        //OR
+        for(int i = 0; i < elements.getLength(); i++)
+        {
+            expression += "|";
+            expression += ParseXMLMathExpression(elements.item(i), expression);
+        }
+        boolean atomicValuePending = false;
+        if(atomicValue != null)
+        {
+            atomicValuePending = !( atomicValue.isEmpty() || atomicValue.isBlank() );
+        }
+        return expression;*/
     }
     protected Model()
     {
@@ -46,7 +100,7 @@ public class Model
             switch (name)
             {
                 case "Utility":
-                    UtilityExpression = ParseXMLMathExpression(node);
+                    UtilityExpression = ParseXMLMathExpression(node, "");
                     break;
                 case "Exploration":
                     break;

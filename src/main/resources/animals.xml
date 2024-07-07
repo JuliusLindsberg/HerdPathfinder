@@ -38,7 +38,7 @@
 		Utility can be derived from a lot of things, such as blocks, environmental factors such as a biome type or temperature or a time of day.
 		Utility could be thought of as an energy source for a living organism.
 		-->
-		<Utility weight = "1.0">
+		<Utility gain = "1.0">
 			minecraft:grass
 			<AND>sunlight</AND>
 		</Utility>
@@ -52,10 +52,14 @@
 		<Generates probability="0.01" min = "5" max = "30">
 			<NOT>sunlight</NOT>
 			<AND>minecraft:stone
-				<OR>minecraft:granite</OR>
-				<OR>minecraft:gravel</OR>
-				<OR>minecraft:diorite</OR>
-				<OR>minecraft:andesite</OR>
+				<OR>minecraft:granite
+					<OR>minecraft:gravel
+						<OR>minecraft:diorite
+							<OR>minecraft:andesite</OR>
+						</OR>
+						
+					</OR>					
+				</OR>				
 			</AND>
 		</Generates>
 		<Utility>

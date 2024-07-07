@@ -16,7 +16,7 @@
 
 \section{Introduction}
 
-[Insert brief description of HerdCraft here]
+[Insert brief overall description of HerdCraft in all its planned might here.]
 
 \subsection{Reinforcement Learning}
 
@@ -28,10 +28,24 @@ An auxiliary goal of the project is to study machine learning in practice by imp
 
 In addition to providing an API for XML editing and the technical documentation for internal classes and methods this document aims to divide up the project's workload into manageable subsections, which can be pursued in a chronological order on a timeline but without a set timetable for completion. Since there is no necessity for releasing a minimum viable product based on a set schedule, clear planning of classes and their relations beforehand reduces the risk for having to do major refactoring during later phases of development. This being a hobby project with no clients or pressures for release it appears preferable approach using a "Big Design Up Front" (BDUF) approach.
 
+\section{Metaphysics}
+
+Reinforcement learning as a popular paradigm of machine learning features a broad range of applications in numerous application spaces. As such, locating the level and form of abstraction most appropriate for the scope and teleological considerations of the project. narrowing down the task into , and subsequently finding the optimal use-cases
+
+For the aforementioned reasons -- and in the absence of a more fitting phrasing for the time being -- an experimental technique of post-structuralist programming is adopted, where the goal is to retain a record on the metaphysical ramifications of decisions taken which are then reflected upon in a dialectical interplay between technical questions of \textit{How} and philosophical investigations on \textit{Why}. As Plato's theory of forms and its proximate relation with OOP in respect to classes and instantiations of objects derived from them would suggest, every programmer engages with such philosophically oriented investigation on metaphysics be it consciously or unconsciously. It is the role of the Metaphysics chapter to ensure that such broader considerations are not left overlooked in the midst of practical necessities for implementation details.
+
+\subsection{Spontaneous generation}
+
+In vanilla Minecraft -- as with many other similar artificial environments featuring procedural generation -- the primary mode of world-building experienced by a typical player occurs through the intermediary of spontaneous generation. In a scientific context, spontaneous generation refers to an obsolete set of theories invented by ancient natural philosophers as an explanation for the origins of primitive fauna perceived then to appear out of thin air \cite{SpontaneousGeneration}. When contrasted to the background of ancient mythical world-views, such an explanation found much practical utility. Fascinatingly, the theory of spontaneous generation was not formally debunked until the work of microbiologist Louis Pasteur in the nineteenth century due to the demand for safe industrialized food-commodities for a modern society built around scientific principles. In Minecraft, somewhat similar issues with spontaneous generation emerge: as the objective of procedural generation is to provide an aesthetic environment for the player to explore, animal herds are distributed in a plausible fashion during world generation. However, besides this initial distribution, said fauna ceases to develop alongside with the world, and is left instead without any purpose other than acting as a resource for the player to utilize in their progressively developing cottage-industry. As such, while simple models for animal behavior might also make sense from a game-loop standpoint, the interaction between fauna and the player can be left as wanting, regardless. Here, even minor improvements in animal behavioral patterns could make a notable difference.
+
+\subsection{Behaviorism}
+
+Reinforcement learning is closely associated with the behaviorist model for cognitive inference. It is thus hypothesized that its principles would then align well with the purposes of the mod: more plausible and interactive animal behavior. While
+
 \newpage
 \section{XML Applications Programming Interface}
 
-%% XML text style layout stolen from: https://tex.stackexchange.com/questions/91298/including-xml-file-into-latex
+%% XML text style layout borrowed(stolen) from: https://tex.stackexchange.com/questions/91298/including-xml-file-into-latex
 
     \lstset{
 	language=xml,
@@ -118,5 +132,12 @@ During this phase of development a path-finding solution making use of dynamic p
 One of the big unresolved questions with this project is in how well a real three dimensional Minecraft map translates into the a graph structure. It is already known from a code-review that the Herd AI movements can be inserted into a priority-queue of Minecraft mobs.
 
 \subsection{title}
+
+\begin{thebibliography}
+	
+	\bibitem{SpontaneousGeneration} https://iep.utm.edu/thales/
+	
+\end{thebibliography}
+
 
 \end{document}
